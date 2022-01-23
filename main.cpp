@@ -5,199 +5,195 @@
 using namespace std;
 
 int main() {
-    char c[7][8];
+    string txt;
+    int baris, kolom, keywords, i, j, a, b, c, d;
+    int checking = 0;
+    cout << "Masukkan nama file : ";
+    cin >> txt;
+    cout << "Masukkan jumlah baris : ";
+    cin >> baris;
+    cout << "Masukkan jumlah kolom : ";
+    cin >> kolom;
+    cout << "Masukkan jumlah kata kunci : ";
+    cin >> keywords;
+    char character[baris][kolom];
+    string word[keywords];
     string line;
-    string word[8];
     ifstream file;
-    file.open("1.txt");
-    for (int i = 0; i < 7; i++) {
-        for (int j = 0; j < 8; j++) {
-            file >> c[i][j];
+    file.open(txt);
+    for (i = 0; i < baris; i++) {
+        for (j = 0; j < kolom; j++) {
+            file >> character[i][j];
         }
     }
-    int a = 0;
+    int idx = 0;
     while (getline(file, line)) {
-        file >> word[a];
-        a++;
+        file >> word[idx];
+        idx++;
     }
     file.close();
     auto started = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i < 7; i++) {
-        for (int j = 0; j < 8; j++) {
-            int p = i;
-            int q = j;
-            int b = 0;
-            int d = 0;
-            while (b < 8) {
-                while (c[p][q] == word[b][d]) {
-                    p--;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+    for (i = 0; i < baris; i++) {
+        for (j = 0; j < kolom; j++) {
+            a = i;
+            b = j;
+            c = 0;
+            d = 0;
+            while (c < keywords) {
+                if (a - word[c].length() + 1 >= 0) { // vertikal ke atas
+                    while (character[a][b] == word[c][d]) {
+                        a--;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if (p == -1) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                while (c[p][q] == word[b][d]) {
-                    p++;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+                if (a + word[c].length() - 1 < baris) { // vertikal ke bawah
+                    while (character[a][b] == word[c][d]) {
+                        a++;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if (p == 7) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                while (c[p][q] == word[b][d]) {
-                    q++;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+                if (b + word[c].length() - 1 < kolom) { // horizontal ke kanan
+                    while (character[a][b] == word[c][d]) {
+                        b++;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if (q == 8) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                while (c[p][q] == word[b][d]) {
-                    q--;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+                if (b - word[c].length() + 1 >= 0) { // horizontal ke kiri
+                    while (character[a][b] == word[c][d]) {
+                        b--;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if (q == -1) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                while (c[p][q] == word[b][d]) {
-                    p--;
-                    q++;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+                if ((a - word[c].length() + 1 >= 0) && (b + word[c].length() - 1 < kolom)) { // diagonal ke kanan atas
+                    while (character[a][b] == word[c][d]) {
+                        a--;
+                        b++;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if ((p == -1) || (q == 8)) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                while (c[p][q] == word[b][d]) {
-                    p++;
-                    q++;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+                if ((a + word[c].length() - 1 < baris) && (b + word[c].length() - 1 < kolom)) { // diagonal ke kanan bawah
+                    while (character[a][b] == word[c][d]) {
+                        a++;
+                        b++;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if ((p == 7) || (q == 8)) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                while (c[p][q] == word[b][d]) {
-                    p--;
-                    q--;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+                if ((a - word[c].length() + 1 >= 0) && (b - word[c].length() + 1 >= 0)) { // diagonal ke kiri atas
+                    while (character[a][b] == word[c][d]) {
+                        a--;
+                        b--;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if ((p == -1) || (q == -1)) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                while (c[p][q] == word[b][d]) {
-                    p++;
-                    q--;
-                    d++;
-                    if (word[b].length() == d) {
-                        cout << word[b] << endl;
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
+                if ((a + word[c].length() - 1 < baris) && (b - word[c].length() + 1 >= 0)) { // diagonal ke kiri bawah
+                    while (character[a][b] == word[c][d]) {
+                        a++;
+                        b--;
+                        d++;
+                        checking++;
+                        if (word[c].length() == d) {
+                            a = i;
+                            b = j;
+                            d = 0;
+                            cout << word[c] << endl;
+                            break;
+                        }
                     }
-                    if ((p == 7) || (q == -1)) {
-                        d = 0;
-                        p = i;
-                        q = j;
-                        break;
-                    }
+                    checking += 1;
+                    a = i;
+                    b = j;
+                    d = 0;
                 }
-                p = i;
-                q = j;
-                d = 0;
-                b++;
+                c++;
             }
         }
     }
     auto done = std::chrono::high_resolution_clock::now();
-    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(done-started).count();
+    std::cout << "Waktu eksekusi program : " << std::chrono::duration_cast<std::chrono::milliseconds>(done-started).count() << " ms" << endl;
+    cout << "Jumlah total perbandingan huruf yang dilakukan : " << checking << endl;
     return 0;
 }
