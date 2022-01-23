@@ -21,7 +21,7 @@ int main() {
     string word[keywords];
     string line;
     ifstream file;
-    file.open(txt);
+    file.open("../test/" + txt);
     for (i = 0; i < baris; i++) {
         for (j = 0; j < kolom; j++) {
             file >> character[i][j];
