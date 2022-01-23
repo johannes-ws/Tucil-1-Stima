@@ -17,7 +17,6 @@ int main() {
     cin >> kolom;
     cout << "Masukkan jumlah kata kunci : ";
     cin >> keywords;
-    cout << "================================================================================" << endl;
     char character[baris][kolom];
     string word[keywords];
     string line;
@@ -35,6 +34,7 @@ int main() {
     }
     file.close();
     auto started = std::chrono::high_resolution_clock::now();
+    cout << "================================================================================" << endl;
     for (i = 0; i < keywords; i++) {
         found = false;
         for (j = 0; j < baris; j++) {
