@@ -6,8 +6,9 @@ using namespace std;
 
 int main() {
     string txt;
-    int baris, kolom, keywords, i, j, a, b, c, d;
+    int baris, kolom, keywords, i, j, k, a, b, c;
     int checking = 0;
+    bool found;
     cout << "Masukkan nama file : ";
     cin >> txt;
     cout << "Masukkan jumlah baris : ";
@@ -33,162 +34,172 @@ int main() {
     }
     file.close();
     auto started = std::chrono::high_resolution_clock::now();
-    for (i = 0; i < baris; i++) {
-        for (j = 0; j < kolom; j++) {
-            a = i;
-            b = j;
-            c = 0;
-            d = 0;
-            while (c < keywords) {
-                if (a - word[c].length() + 1 >= 0) { // vertikal ke atas
-                    while (character[a][b] == word[c][d]) {
+    for (i = 0; i < keywords; i++) {
+        found = false;
+        for (j = 0; j < baris; j++) {
+            for (k = 0; k < kolom; k++) {
+                a = j;
+                b = k;
+                c = 0;
+                if (a - word[i].length() + 1 >= 0) { // vertikal ke atas
+                    while (character[a][b] == word[i][c]) {
                         a--;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                if (a + word[c].length() - 1 < baris) { // vertikal ke bawah
-                    while (character[a][b] == word[c][d]) {
+                if (a + word[i].length() - 1 < baris) { // vertikal ke bawah
+                    while (character[a][b] == word[i][c]) {
                         a++;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                if (b + word[c].length() - 1 < kolom) { // horizontal ke kanan
-                    while (character[a][b] == word[c][d]) {
+                if (b + word[i].length() - 1 < kolom) { // horizontal ke kanan
+                    while (character[a][b] == word[i][c]) {
                         b++;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                if (b - word[c].length() + 1 >= 0) { // horizontal ke kiri
-                    while (character[a][b] == word[c][d]) {
+                if (b - word[i].length() + 1 >= 0) { // horizontal ke kiri
+                    while (character[a][b] == word[i][c]) {
                         b--;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                if ((a - word[c].length() + 1 >= 0) && (b + word[c].length() - 1 < kolom)) { // diagonal ke kanan atas
-                    while (character[a][b] == word[c][d]) {
+                if ((a - word[i].length() + 1 >= 0) && (b + word[i].length() - 1 < kolom)) { // diagonal ke kanan atas
+                    while (character[a][b] == word[i][c]) {
                         a--;
                         b++;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                if ((a + word[c].length() - 1 < baris) && (b + word[c].length() - 1 < kolom)) { // diagonal ke kanan bawah
-                    while (character[a][b] == word[c][d]) {
+                if ((a + word[i].length() - 1 < baris) && (b + word[i].length() - 1 < kolom)) { // diagonal ke kanan bawah
+                    while (character[a][b] == word[i][c]) {
                         a++;
                         b++;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                if ((a - word[c].length() + 1 >= 0) && (b - word[c].length() + 1 >= 0)) { // diagonal ke kiri atas
-                    while (character[a][b] == word[c][d]) {
+                if ((a - word[i].length() + 1 >= 0) && (b - word[i].length() + 1 >= 0)) { // diagonal ke kiri atas
+                    while (character[a][b] == word[i][c]) {
                         a--;
                         b--;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                if ((a + word[c].length() - 1 < baris) && (b - word[c].length() + 1 >= 0)) { // diagonal ke kiri bawah
-                    while (character[a][b] == word[c][d]) {
+                if ((a + word[i].length() - 1 < baris) && (b - word[i].length() + 1 >= 0)) { // diagonal ke kiri bawah
+                    while (character[a][b] == word[i][c]) {
                         a++;
                         b--;
-                        d++;
+                        c++;
                         checking++;
-                        if (word[c].length() == d) {
-                            a = i;
-                            b = j;
-                            d = 0;
-                            cout << word[c] << endl;
+                        if (word[i].length() == c) {
+                            found = true;
+                            cout << word[i] << endl;
                             break;
                         }
                     }
+                    if (found) {
+                        break;
+                    }
                     checking += 1;
-                    a = i;
-                    b = j;
-                    d = 0;
+                    a = j;
+                    b = k;
+                    c = 0;
                 }
-                c++;
+            }
+            if (found) {
+                break;
             }
         }
     }
