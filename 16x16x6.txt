@@ -1,0 +1,23 @@
+R D	W V	K C	O X	G Q	R Y	D X	B F
+Z E	E O	N I	C F	H A	R G	C Q	O F
+K A	P S	Z B	Y Z	J E	R X	Z Q	K O
+D E	M E	U U	J N	L R	B M	S H	M Z
+G L	G Z	E C	R T	V X	T P	E G	C A
+N Q	N J	B B	U F	U S	I O	N N	V Y
+E V	N I	X C	H D	E A	B O	M P	T Y
+G T	X U	U Y	U I	G H	E N	O O	V G
+D Q	B G	I D	H L	Y F	L U	R F	B O
+R N	V D	T K	T X	Z V	J E	A I	L P
+X Z	C P	M S	S P	K D	Q D	L C	J O
+C J	D G	F E	R Q	R P	K V	H H	H P
+H T	W T	Z V	P C	L B	I F	P S	H X
+P S	Q Q	I B	X I	S F	U S	N Y	R Q
+G D	G H	J S	V X	Y Q	T P	A X	S I
+A W	U D	N U	F D	F F	P U	H N	B C
+
+BEEPER
+CUBIC
+CUTLERY
+FUSION
+GARMENT
+MORAL
