@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     string txt;
-    int baris, kolom, keywords, i, j, k, a, b, c;
+    int baris, kolom, keywords, i, j, k, l, m, a, b, c;
     int checking = 0;
     bool found;
     cout << "Masukkan nama file : ";
@@ -17,6 +17,7 @@ int main() {
     cin >> kolom;
     cout << "Masukkan jumlah kata kunci : ";
     cin >> keywords;
+    cout << "================================================================================" << endl;
     char character[baris][kolom];
     string word[keywords];
     string line;
@@ -48,7 +49,21 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j - word[i].length() + 1;
+                            b = k;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        a++;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -67,7 +82,21 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j;
+                            b = k;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        a++;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -86,7 +115,21 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j;
+                            b = k;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        b++;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -105,7 +148,21 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j;
+                            b = k - word[i].length() + 1;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        b++;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -125,7 +182,22 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j - word[i].length() + 1;
+                            b = k + word[i].length() - 1;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        a++;
+                                        b--;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -145,7 +217,22 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j;
+                            b = k;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        a++;
+                                        b++;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -165,7 +252,22 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j - word[i].length() + 1;
+                            b = k - word[i].length() + 1;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        a++;
+                                        b++;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -185,7 +287,22 @@ int main() {
                         checking++;
                         if (word[i].length() == c) {
                             found = true;
-                            cout << word[i] << endl;
+                            a = j;
+                            b = k;
+                            c = 0;
+                            for (l = 0; l < baris; l++) {
+                                for (m = 0; m < kolom; m++) {
+                                    if ((l == a) && (m == b) && (c < word[i].length())) {
+                                        cout << character[l][m] << ' ';
+                                        a++;
+                                        b--;
+                                        c++;
+                                    } else {
+                                        cout << '-' << ' ';
+                                    }
+                                }
+                                cout << endl;
+                            }
                             break;
                         }
                     }
@@ -199,6 +316,7 @@ int main() {
                 }
             }
             if (found) {
+                cout << "================================================================================" << endl;
                 break;
             }
         }
