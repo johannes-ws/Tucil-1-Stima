@@ -6,8 +6,8 @@ using namespace std;
 
 int main() {
     string txt;
-    int baris, kolom, keywords, i, j, k, l, m, a, b, c;
-    int checking = 0;
+    int baris, kolom, keywords, check, i, j, k, l, m, a, b, c;
+    int checkall = 0;
     bool found;
     cout << "Masukkan nama file : ";
     cin >> txt;
@@ -36,6 +36,7 @@ int main() {
     auto started = std::chrono::high_resolution_clock::now();
     cout << "================================================================================" << endl;
     for (i = 0; i < keywords; i++) {
+        check = 0;
         found = false;
         for (j = 0; j < baris; j++) {
             for (k = 0; k < kolom; k++) {
@@ -46,7 +47,8 @@ int main() {
                     while (character[a][b] == word[i][c]) {
                         a--;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j - word[i].length() + 1;
@@ -70,7 +72,8 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
@@ -79,7 +82,8 @@ int main() {
                     while (character[a][b] == word[i][c]) {
                         a++;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j;
@@ -103,7 +107,8 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
@@ -112,7 +117,8 @@ int main() {
                     while (character[a][b] == word[i][c]) {
                         b++;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j;
@@ -136,7 +142,8 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
@@ -145,7 +152,8 @@ int main() {
                     while (character[a][b] == word[i][c]) {
                         b--;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j;
@@ -169,7 +177,8 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
@@ -179,7 +188,8 @@ int main() {
                         a--;
                         b++;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j - word[i].length() + 1;
@@ -204,7 +214,8 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
@@ -214,7 +225,8 @@ int main() {
                         a++;
                         b++;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j;
@@ -239,7 +251,8 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
@@ -249,7 +262,8 @@ int main() {
                         a--;
                         b--;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j - word[i].length() + 1;
@@ -274,7 +288,8 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
@@ -284,7 +299,8 @@ int main() {
                         a++;
                         b--;
                         c++;
-                        checking++;
+                        check++;
+                        checkall++;
                         if (word[i].length() == c) {
                             found = true;
                             a = j;
@@ -309,13 +325,15 @@ int main() {
                     if (found) {
                         break;
                     }
-                    checking += 1;
+                    check += 1;
+                    checkall += 1;
                     a = j;
                     b = k;
                     c = 0;
                 }
             }
             if (found) {
+                cout << "Total perbandingan huruf yang dilakukan : " << check << endl;
                 cout << "================================================================================" << endl;
                 break;
             }
@@ -323,6 +341,6 @@ int main() {
     }
     auto done = std::chrono::high_resolution_clock::now();
     std::cout << "Waktu eksekusi program : " << std::chrono::duration_cast<std::chrono::milliseconds>(done-started).count() << " ms" << endl;
-    cout << "Jumlah total perbandingan huruf yang dilakukan : " << checking << endl;
+    cout << "Jumlah total perbandingan huruf yang dilakukan : " << checkall << endl;
     return 0;
 }
